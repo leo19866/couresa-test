@@ -3,11 +3,11 @@
 
 angular.module('LunchCheck', [])
 
-.controller('LunchCheckController', function ($scope) {
+.controller('LunchCheckController', ['$scope', LunchCheckController]);
+
+function LunchCheckController($scope) {
   
   $scope.calculate = function () {
-  	// body...
-    //console.log(food);
 
     if($scope.food != ""){
       $scope.meals = $scope.food.split(',');
@@ -25,6 +25,6 @@ angular.module('LunchCheck', [])
 
   };
 
-});
+}
 
 })();
