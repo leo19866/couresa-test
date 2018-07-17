@@ -3,31 +3,33 @@
 
 angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
+//.controller('foundItemsDirectiveController',foundItemsDirectiveController)
 .service('MenuSearchService', MenuSearchService)
+.directive('foundItems', foundItemsDirective)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com/menu_items.json");
 
-/*
-NarrowItDownController.$inject = ['MenuCategoriesService'];
-function NarrowItDownController() {
+
+//foundItemsDirective.$inject = ['MenuCategoriesService'];
+function foundItemsDirective() {
 
   var ddo = {
-    templateUrl: 'shoppingList.html',
+    templateUrl: 'foundItems.html',
     scope: {
       items: '<',
       myTitle: '@title',
       badRemove: '=',
       onRemove: '&'
     },
-    controller: ShoppingListDirectiveController,
+    /*controller: foundItemsDirectiveController,
     controllerAs: 'list',
-    bindToController: true
+    bindToController: true*/
   };
 
   return ddo;
 }
 
-
-function ShoppingListDirectiveController() {
+/*
+function foundItemsDirectiveController() {
   var list = this;
 
   list.cookiesInList = function () {
@@ -47,10 +49,19 @@ NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var list = this;
   
+  list.searchTerm = "";
+
   list.getItems = function() {
     //console.log("hi");
-    var  foundItems = MenuSearchService.getMatchedMenuItems();
-    console.log(foundItems);
+    var promise = MenuSearchService.getMatchedMenuItems(list.searchTerm);
+    console.log(promise);
+    promise.then(function (response) {
+    list.items = response.data;
+  });
+    //list.items = MenuSearchService.getMatchedMenuItems(list.searchTerm);
+   
+    //list.items = MenuSearchService.getMatchedMenuItems(list.searchTerm);
+    console.log(list.items);
   }
   
   /*
@@ -87,7 +98,7 @@ function MenuSearchService($http,ApiBasePath) {
   var service = this;
 
   // List of shopping items
-  var items = [];
+  
   
 
 
@@ -125,11 +136,11 @@ function MenuSearchService($http,ApiBasePath) {
       }
 
     // return processed items
-      console.log(foundItems);
+      //console.log(foundItems);
       return foundItems;
       
     });
-    
+
   };
 
  
