@@ -1,9 +1,13 @@
-<h3>Title: {{ list.myTitle }}</h3>
-<ol>
-  <li ng-repeat="item in list.items">
-     {{ item.name }}
-    <button ng-click="list.badRemove($index);">Bad Remove Item</button>
-    <button ng-click="list.onRemove({index: $index});">Remove Item</button>
-  </li>
-</ol>
-
+<br>
+<br>
+<div>
+	<ol>
+		<ul ng-repeat='item in found'>
+		<br>
+			Name: {{item.name}} <br>
+			Short Name: {{item.short_name}} <br>
+			Description: {{item.description}} <br> 
+			<button ng-click='onRemove({index: $index})'>Don't want this one!</button>
+		</ul>
+	</ol>
+</div>
