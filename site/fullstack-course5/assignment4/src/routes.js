@@ -16,21 +16,22 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   // Home page
   .state('home', {
     url: '/',
-    templateUrl: 'src/shoppinglist/templates/home.template.html'
+    templateUrl: 'src/MenuApp/templates/home.template.html'
   })
 
   // Premade list page
   .state('mainList', {
     url: '/main-list',
     templateUrl: 'src/MenuApp/templates/main-MenuApp.template.html',
-    controller: 'MainShoppingListController as mainList',
+    controller: 'CategoriesController as mainList',
     resolve: {
       items: ['MenuDataService', function (MenuDataService) {
-        return MenuDataService.getItems();
+         console.log(MenuDataService.getAllCategories());
+         return MenuDataService.getAllCategories();
       }]
     }
   })
-
+  /*
   // Item detail
   .state('mainList.itemDetail', {
     // url: '/item-detail/{itemId}',
@@ -40,7 +41,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
       itemId: null
     }
   });
-
+  */
 }
 
 })();

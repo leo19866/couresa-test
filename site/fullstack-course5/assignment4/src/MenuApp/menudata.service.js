@@ -19,20 +19,20 @@ function MenuDataService($http) {
       method: "GET",
       url: 'https://davids-restaurant.herokuapp.com/categories.json'
     }).then(function (result) {
-       AllCategories = result.data.menu_items;
-       
+       AllCategories = result.data;
+       //console.log(AllCategories);
        return AllCategories;
-    };
+    });
   };
 
   service.getItemsForCategory = function (categoryShortName) {
     
-    rerun $http({
+    return $http({
       method: "GET",
       url: 'https://davids-restaurant.herokuapp.com/menu_items.json?category={categoryShortName}'
     }).then(function (result) {
       
-      ItemsForCategory = result.data.menu_items;
+      ItemsForCategory = result.data;
       return ItemsForCategory;
     });
   };
