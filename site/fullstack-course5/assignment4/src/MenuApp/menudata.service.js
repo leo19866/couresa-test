@@ -29,10 +29,14 @@ function MenuDataService($http) {
     
     return $http({
       method: "GET",
-      url: 'https://davids-restaurant.herokuapp.com/menu_items.json?category={categoryShortName}'
+      url: 'https://davids-restaurant.herokuapp.com/menu_items.json',
+      params: {
+        category: categoryShortName
+      }
     }).then(function (result) {
       
-      ItemsForCategory = result.data;
+      ItemsForCategory = result.data.menu_items;
+      //console.log(ItemsForCategory);
       return ItemsForCategory;
     });
   };
