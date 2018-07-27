@@ -10,9 +10,10 @@ function SingUpController(MenuService) {
   
   reg.submit = function () {
   	 MenuService.getFavoriteItems(reg.user.menunumber).then(function (response) {
-     MenuService.saveUserPreference(reg.user.username,reg.user.email,reg.user.phone,reg.user.menunumber);
+  	 reg.user.favoriteItem = response.data;
+     MenuService.saveUserPreference(reg.user);
   	 reg.message ="Your information has been saved.";
-      //return response.data;
+       
     }).catch(function (error) {
      reg.message = "No such menu number exists";
   });

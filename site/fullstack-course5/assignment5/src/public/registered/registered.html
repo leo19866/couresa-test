@@ -1,0 +1,18 @@
+<!--
+Username: {{ registered.user.username}}
+<div id="info" ng-if="registered.check">
+      Username: {{ registered.user.username}} <br>
+      Email: {{ registered.user.email}} <br>
+      Phone: {{ registered.user.phone }} <br>
+      Message: {{ registered.message }}
+</div>
+-->
+<h2>Register</h2>
+<div id="info" ng-if="registered.check">      
+  <user ng-repeat="user in registered.users" user="user">
+
+  </user>
+</div>
+<div id="info" ng-if="!registered.check">
+      <a ui-sref="public.signup">Not Signed Up Yet. Sign up Now!>
+</div>

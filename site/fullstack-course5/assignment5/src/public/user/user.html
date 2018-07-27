@@ -1,0 +1,11 @@
+      Username: {{ $ctrl.user.username}} <br>
+      Email: {{ $ctrl.user.email}} <br>
+      Phone: {{ $ctrl.user.phone }} <br>
+      <div class="menu-item-description col-sm-7">
+      <h3 class="menu-item-title">{{$ctrl.user.favoriteItem.name}}</h3>
+      <p class="menu-item-details">{{$ctrl.user.favoriteItem.description}}</p>
+      </div>
+      <div class="menu-item-photo">
+        <div>{{$ctrl.user.favoriteItem.short_name}}</div>
+        <img class="img-responsive" width="250" height="150" ng-src="{{$ctrl.basePath}}/images/{{$ctrl.user.favoriteItem.short_name}}.jpg" alt="{{$ctrl.user.favoriteItem.name}}">
+      </div>

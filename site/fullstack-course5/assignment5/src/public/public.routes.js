@@ -49,6 +49,14 @@ function routeConfig ($stateProvider) {
       controller: 'SingUpController',
       controllerAs: 'reg',
      
+    })
+    .state('public.registered', {
+      url: '/registered',
+      templateUrl: 'src/public/registered/registered.html',
+      controller: 'RegisteredController',
+      controllerAs: 'registered',
+     
     });
+
 }
 })();

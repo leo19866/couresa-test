@@ -8,7 +8,9 @@ angular.module('common')
 MenuService.$inject = ['$http', 'ApiPath'];
 function MenuService($http, ApiPath) {
   var service = this;
-  var users=[];
+  //var user={};
+   service.users = [];
+   //service.user.length = service.user.length - 1;
 
   service.getCategories = function () {
     return $http.get(ApiPath + '/categories.json').then(function (response) {
@@ -32,15 +34,30 @@ function MenuService($http, ApiPath) {
     //var config = {};
     return $http.get(ApiPath + '/menu_items/' + short_name +'.json');
   }
+  /*
+  service.saveUserPreference = function (user) {
+    
+      user.username = user.username;
+      user.email = user.email;
+      user.phone = user.phone;
+      user.menunumber = user.menunumber;
+      user.favoriteItem = user.favoriteItem;
+    
+    console.log(user);
+  }
+  */
+  
+  service.saveUserPreference = function (user) {
+    
+      service.users.push(user);
+    
+    console.log(service.users);
+  }
+  
 
-  service.saveUserPreference = function (username,email,phone,menu_number) {
-    users.push({
-      name: username,
-      email: email,
-      phone: phone,
-      menu_number: menu_number
-    });
-    console.log(users);
+
+  service.getUser = function () {
+    return service.users;
   }
 }
 
